@@ -109,6 +109,7 @@ sync:
     --include "Hello.c++"                    \
     --include "Docker.sh"                    \
     --include "Assertions.c++"               \
+    --include "Exceptions.c++"               \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
@@ -118,6 +119,10 @@ sync:
     --include "Coverage1.c++"                \
     --include "Coverage2.c++"                \
     --include "Coverage3.c++"                \
+    --include "IsPrime1.c++"                 \
+    --include "IsPrime1.h"                   \
+    --include "IsPrime2.c++"                 \
+    --include "IsPrime2.h"                   \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \
