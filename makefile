@@ -87,6 +87,7 @@ pull:
 push:
 	make clean
 	@echo
+	git add .gitignore
 	git add .travis.yml
 	git add Dockerfile
 	git add examples
