@@ -7,9 +7,11 @@ Docker version 1.12.0, build 8eab29e
 
 
 % docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 
 
 % docker pull gpdowning/gcc
+...
 
 
 % docker images
