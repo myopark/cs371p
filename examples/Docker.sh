@@ -7,6 +7,12 @@ Docker version 1.12.0, build 8eab29e
 
 
 % docker images
+
+
+% docker pull gpdowning/gcc
+
+
+% docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 gpdowning/gcc       latest              6d99da31f687        11 hours ago        1.986 GB
 gcc                 5.3                 3c08a103780b        3 weeks ago         1.422 GB
