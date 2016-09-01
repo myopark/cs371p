@@ -1,0 +1,11 @@
+.DS_Store
+*.dSYM
+*.gcda
+*.gcno
+*.gcov
+*.plist
+Icon?
+RunCollatz
+RunCollatz.tmp
+TestCollatz
+TestCollatz.tmp
