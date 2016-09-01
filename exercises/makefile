@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := test
+
 FILES :=
 
 ifeq ($(shell uname), Darwin)                                        # Apple

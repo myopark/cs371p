@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := test
+
 ifeq ($(shell uname), Darwin)                                        # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
