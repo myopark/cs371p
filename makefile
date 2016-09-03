@@ -35,7 +35,7 @@ else ifeq ($(shell uname -p), unknown)                               # Docker
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
     VALGRIND     := valgrind
     DOXYGEN      := doxygen
-    CLANG-FORMAT := clang-format
+    CLANG-FORMAT := clang-format-3.5
 else                                                                 # UTCS
     CXX          := g++-4.8
     INCLUDE      := /usr/include
@@ -163,11 +163,9 @@ versions:
 	ls -ald $(INCLUDE)/gtest
 	@echo
 	ls -al $(LIB)/*gtest*
-ifneq ($(shell uname -p), unknown) # Docker
 	@echo
 	which $(CLANG-CHECK)
 	$(CLANG-CHECK) --version
-endif
 	@echo
 	which $(GCOV)
 	$(GCOV) --version
@@ -177,8 +175,6 @@ endif
 	@echo
 	which $(DOXYGEN)
 	$(DOXYGEN) --version
-ifneq ($(shell uname -p), unknown) # Docker
 	@echo
 	which $(CLANG-FORMAT)
 	$(CLANG-FORMAT) --version
-endif
