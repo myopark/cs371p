@@ -38,7 +38,7 @@ else ifeq ($(shell uname -p), unknown)                               # Docker
     GCOVFLAGS    := -fprofile-arcs -ftest-coverage
     VALGRIND     := valgrind
     DOXYGEN      := doxygen
-    CLANG-FORMAT := clang-format
+    CLANG-FORMAT := clang-format-3.5
 else                                                                 # UTCS
     CXX          := g++-4.8
     INCLUDE      := /usr/include
@@ -55,10 +55,8 @@ endif
 
 %.app: %.c++
 	$(CXX) $(CXXFLAGS) $< -o $@
-ifneq ($(shell uname -p), unknown)                       # Docker
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
-endif
 
 %.c++x: %.app
 	./$<
