@@ -1,7 +1,11 @@
 .DEFAULT_GOAL := test
 
-FILES :=     \
-    IsPrime1 \
+FILES :=       \
+    UnitTests3 \
+    Coverage1  \
+    Coverage2  \
+    Coverage3  \
+    IsPrime1   \
     IsPrime2
 
 ifeq ($(shell uname), Darwin)                                        # Apple
