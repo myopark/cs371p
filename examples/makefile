@@ -2,7 +2,6 @@
 
 FILES :=                    \
     Hello                   \
-    Assertions              \
     UnitTests3              \
     Coverage1               \
     Coverage2               \
