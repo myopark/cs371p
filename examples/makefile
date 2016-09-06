@@ -2,6 +2,14 @@
 
 FILES :=                    \
     Hello                   \
+    Assertions              \
+    UnitTests3              \
+    Coverage1               \
+    Coverage2               \
+    Coverage3               \
+    Exceptions              \
+    Variables               \
+    Arguments
 
 ifeq ($(shell uname), Darwin)                                        # Apple
     CXX          := g++
