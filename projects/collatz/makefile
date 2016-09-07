@@ -79,6 +79,11 @@ Collatz.log:
 Doxyfile:
 	doxygen -g
 
+# Make the following edits to Doxyfile.
+# EXTRACT_ALL            = YES
+# EXTRACT_PRIVATE        = YES
+# EXTRACT_STATIC         = YES
+
 RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          Collatz.c++     --
