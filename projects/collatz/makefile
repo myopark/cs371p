@@ -139,10 +139,10 @@ config:
 	git config -l
 
 format:
-	clang-format -i Collatz.c++
-	clang-format -i Collatz.h
-	clang-format -i RunCollatz.c++
-	clang-format -i TestCollatz.c++
+	$(CLANG-FORMAT) -i Collatz.c++
+	$(CLANG-FORMAT) -i Collatz.h
+	$(CLANG-FORMAT) -i RunCollatz.c++
+	$(CLANG-FORMAT) -i TestCollatz.c++
 
 status:
 	make clean
