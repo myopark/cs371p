@@ -1,5 +1,4 @@
 .PHONY: Collatz.log
-
 .DEFAULT_GOAL := test
 
 FILES :=                              \
