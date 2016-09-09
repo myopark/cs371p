@@ -5,6 +5,7 @@
 *.gcov
 *.plist
 collatz-tests
+Doxyfile
 Icon?
 RunCollatz
 RunCollatz.tmp
