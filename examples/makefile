@@ -1,9 +1,11 @@
 .DEFAULT_GOAL := test
 
-FILES :=                    \
-    Hello                   \
-    Exceptions              \
-    Variables               \
+FILES :=       \
+    Hello      \
+    Exceptions \
+    Variables  \
+    Types      \
+    Operators  \
     Arguments
 
 ifeq ($(shell uname), Darwin)                                        # Apple

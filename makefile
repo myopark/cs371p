@@ -114,6 +114,8 @@ sync:
     --include "Assertions.c++"               \
     --include "Exceptions.c++"               \
     --include "Variables.c++"                \
+    --include "Types.c++"                    \
+    --include "Operators.c++"                \
     --include "Arguments.c++"                \
     --exclude "*"                            \
     ../../examples/c++/ examples
