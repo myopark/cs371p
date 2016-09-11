@@ -4,7 +4,6 @@
 
 FILES :=                              \
     .gitignore                        \
-    .travis.yml                       \
     Collatz.c++                       \
     Collatz.h                         \
     Collatz.log                       \
