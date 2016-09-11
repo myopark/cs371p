@@ -30,7 +30,6 @@ install:
 before_script:
     - uname -a
     - printenv
-    - apt list --installed
     - make versions
 
 script:
