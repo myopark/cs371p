@@ -174,7 +174,7 @@ versions:
 	ls -al $(LIB)/*gtest*
 	@echo
 	which $(CLANG-CHECK)
-	$(CLANG-CHECK) --version
+	-$(CLANG-CHECK) --version
 	@echo
 	which $(GCOV)
 	$(GCOV) --version
