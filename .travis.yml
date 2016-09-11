@@ -19,13 +19,16 @@ addons:
 install:
     - pwd
     - ls -al
+    - cd /usr/lib/
+    - pwd
+    - ls -al
     - mkdir gtest
     - cd gtest
     - pwd
     - ls -al
     - export LIBRARY_PATH=$(pwd)
-    - cp -r /usr/src/gtest/* ./
-    - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
+    - cp -r /usr/src/gtest/* /usr/lib/gtest/
+    - cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr/lib/gtest/ /usr/lib/gtest/
     - make
     - pwd
     - ls -al
