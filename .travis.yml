@@ -17,13 +17,17 @@ addons:
       - ubuntu-toolchain-r-test
 
 install:
+    - pwd
+    - ls -al
     - mkdir gtest
     - cd gtest
-    - echo $(pwd)
+    - pwd
+    - ls -al
     - export LIBRARY_PATH=$(pwd)
     - cp -r /usr/src/gtest/* ./
     - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
     - make
+    - pwd
     - ls -al
     - cd -
 
