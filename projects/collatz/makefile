@@ -37,7 +37,7 @@ else ifeq ($(CI), true)                                              # Travis CI
     CXX          := g++-5
     INCLUDE      := /usr/include
     CXXFLAGS     := -pedantic -std=c++11 -Wall -Weffc++
-    LIB          := /usr/lib
+    LIB          := /home/travis/build/gpdowning/cs371p/gtest
     LDFLAGS      := -lgtest -lgtest_main -pthread
     CLANG-CHECK  := clang-check
     GCOV         := gcov-5
