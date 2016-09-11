@@ -172,6 +172,7 @@ versions:
 	ls -ald $(INCLUDE)/gtest
 	@echo
 	ls -al $(LIB)/*gtest*
+	dpkg -l libgtest-dev
 	@echo
 	which $(CLANG-CHECK)
 	-$(CLANG-CHECK) --version

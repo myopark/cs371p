@@ -16,6 +16,8 @@ FILES :=                              \
     TestCollatz.out
 
 # uncomment these:
+#    .travis.yml                       \
+#    UVaCollatz.c++                    \
 #    collatz-tests/EID-RunCollatz.in   \
 #    collatz-tests/EID-RunCollatz.out  \
 #    collatz-tests/EID-TestCollatz.c++ \
@@ -177,9 +179,10 @@ versions:
 	ls -ald $(INCLUDE)/gtest
 	@echo
 	ls -al $(LIB)/*gtest*
+	dpkg -l libgtest-dev
 	@echo
 	which $(CLANG-CHECK)
-	$(CLANG-CHECK) --version
+	-$(CLANG-CHECK) --version
 	@echo
 	which $(GCOV)
 	$(GCOV) --version
@@ -191,4 +194,4 @@ versions:
 	$(DOXYGEN) --version
 	@echo
 	which $(CLANG-FORMAT)
-	$(CLANG-FORMAT) --version
+	-$(CLANG-FORMAT) --version

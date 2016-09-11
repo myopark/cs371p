@@ -32,8 +32,6 @@ install:
 before_script:
     - uname -a
     - printenv
-    - grep "#define BOOST_VERSION " /usr/include/boost/version.hpp
-    - dpkg -l libgtest-dev
     - make versions
 
 script:
