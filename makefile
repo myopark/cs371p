@@ -186,4 +186,4 @@ versions:
 	$(DOXYGEN) --version
 	@echo
 	which $(CLANG-FORMAT)
-	$(CLANG-FORMAT) --version
+	-$(CLANG-FORMAT) --version
