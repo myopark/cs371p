@@ -3,10 +3,13 @@
 .DEFAULT_GOAL := test
 
 FILES :=                              \
+    .gitignore                        \
+    .travis.yml                       \
     Collatz.c++                       \
     Collatz.h                         \
     Collatz.log                       \
     html                              \
+    makefile                          \
     RunCollatz.c++                    \
     RunCollatz.in                     \
     RunCollatz.out                    \
