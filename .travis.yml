@@ -21,7 +21,7 @@ install:
     - ls -al
     - mkdir gtest
     - cd gtest
-    - export LIBRARY_PATH=$(PWD)
+    - export LIBRARY_PATH=$(pwd)
     - cp -r /usr/src/gtest/* ./
     - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
     - make
