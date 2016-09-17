@@ -117,6 +117,9 @@ sync:
     --include "Types.c++"                    \
     --include "Operators.c++"                \
     --include "Arguments.c++"                \
+    --include "Iterators.c++"                \
+    --include "Functions.c++"                \
+    --include "Returns.c++"                  \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
@@ -136,6 +139,7 @@ sync:
     --include "Equal.h"                      \
     --include "Copy.c++"                     \
     --include "Fill.c++"                     \
+    --include "AllOf.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \

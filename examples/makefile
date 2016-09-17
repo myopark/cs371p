@@ -6,7 +6,10 @@ FILES :=       \
     Variables  \
     Types      \
     Operators  \
-    Arguments
+    Arguments  \
+    Iterators  \
+    Functions  \
+    Returns
 
 ifeq ($(shell uname), Darwin)                                        # Apple
     CXX          := g++
