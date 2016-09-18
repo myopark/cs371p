@@ -65,6 +65,48 @@ else                                                                 # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
+Coverage1.app: Coverage1.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+Coverage2.app: Coverage2.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+Coverage3.app: Coverage3.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+UnitTests1.app: UnitTests1.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+UnitTests2.app: UnitTests2.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+UnitTests3.app: UnitTests3.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
+
+Coverage1.c++x: Coverage1.app
+	./$<
+	$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '$(<:.app=.c++)'"
+
+Coverage2.c++x: Coverage2.app
+	./$<
+	$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '$(<:.app=.c++)'"
+
+Coverage3.c++x: Coverage3.app
+	./$<
+	$(GCOV) -b $(<:.app=.c++) | grep -A 5 "File '$(<:.app=.c++)'"
+
 %.app: %.c++
 	$(CXX) $(CXXFLAGS) $< -o $@
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
