@@ -1,10 +1,6 @@
 .DEFAULT_GOAL := test
 
 FILES :=       \
-    UnitTests3 \
-    Coverage1  \
-    Coverage2  \
-    Coverage3  \
     IsPrime1   \
     IsPrime2   \
     Incr       \
