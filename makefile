@@ -112,6 +112,12 @@ sync:
     --include "Hello.c++"                    \
     --include "Docker.sh"                    \
     --include "Assertions.c++"               \
+    --include "UnitTests1.c++"               \
+    --include "UnitTests2.c++"               \
+    --include "UnitTests3.c++"               \
+    --include "Coverage1.c++"                \
+    --include "Coverage2.c++"                \
+    --include "Coverage3.c++"                \
     --include "Exceptions.c++"               \
     --include "Variables.c++"                \
     --include "Types.c++"                    \
@@ -123,12 +129,6 @@ sync:
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
-    --include "UnitTests1.c++"               \
-    --include "UnitTests2.c++"               \
-    --include "UnitTests3.c++"               \
-    --include "Coverage1.c++"                \
-    --include "Coverage2.c++"                \
-    --include "Coverage3.c++"                \
     --include "IsPrime1.c++"                 \
     --include "IsPrime1.h"                   \
     --include "IsPrime2.c++"                 \

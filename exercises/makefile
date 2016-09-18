@@ -60,7 +60,7 @@ else                                                                 # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-%.app: %.c++
+%.app: %.c++ %.h
 	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $< -o $@ $(LDFLAGS)
 	-$(CLANG-CHECK) -extra-arg=-std=c++11          $< --
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze $< --
