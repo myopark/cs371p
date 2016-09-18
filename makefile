@@ -159,8 +159,8 @@ test:
 	cd examples; make test
 	@echo
 	cd exercises; make test
-	@echo
-	cd projects/collatz; make test
+#	@echo
+#	cd projects/collatz; make test
 
 versions:
 	which make
