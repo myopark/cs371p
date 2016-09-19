@@ -139,6 +139,8 @@ sync:
     --include "Equal.h"                      \
     --include "Copy.c++"                     \
     --include "Fill.c++"                     \
+    --include "RangeIterator.c++"            \
+    --include "Range.c++"                    \
     --include "AllOf.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
