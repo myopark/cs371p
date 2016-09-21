@@ -123,6 +123,7 @@ sync:
     --include "Types.c++"                    \
     --include "Operators.c++"                \
     --include "Arguments.c++"                \
+    --include "BoostSerialization.c++"       \
     --include "Iterators.c++"                \
     --include "Functions.c++"                \
     --include "Returns.c++"                  \
