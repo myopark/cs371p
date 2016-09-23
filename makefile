@@ -143,6 +143,7 @@ sync:
     --include "Fill.c++"                     \
     --include "Fill.h"                       \
     --include "RMSE.c++"                     \
+    --include "RMSE.h"                       \
     --include "RangeIterator.c++"            \
     --include "Range.c++"                    \
     --include "AllOf.c++"                    \
