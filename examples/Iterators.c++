@@ -39,7 +39,7 @@ int main () {
     forward_list<int> x(3);
     const int v = 2;
     fill(x.begin(), x.end(), v);
-    assert(all_of(x.begin(), x.end(), [] (int w) -> bool {return w == v;}));
+    assert(all_of(x.begin(), x.end(), [v] (int w) -> bool {return w == v;}));
     }
 /*
     {
