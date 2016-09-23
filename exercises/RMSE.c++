@@ -13,7 +13,7 @@
 using namespace std;
 using namespace testing;
 
-using RMSEListSignature = function<bool (list<int>::const_iterator, list<int>::const_iterator, vector<int>::const_iterator)>;
+using RMSEListSignature = function<bool (list<double>::const_iterator, list<double>::const_iterator, vector<double>::const_iterator, double)>;
 
 struct RMSEListFixture : TestWithParam<RMSEListSignature>
     {};
@@ -22,25 +22,26 @@ INSTANTIATE_TEST_CASE_P(
     RMSEListInstantiation,
     RMSEListFixture,
     Values(
-        rmse_while<list<int>::const_iterator, vector<int>::const_iterator>,
-        rmse_transform_accumulate<list<int>::const_iterator, vector<int>::const_iterator>));
+        rmse_while<list<double>::const_iterator, vector<double>::const_iterator, double>,
+        rmse_transform_accumulate<list<double>::const_iterator, vector<double>::const_iterator, double>,
+        rmse_back_inserter<list<double>::const_iterator, vector<double>::const_iterator, double>));
 
 TEST_P(RMSEListFixture, test_1) {
-    const list<int>   x = {2, 3, 4};
-    const vector<int> y = {2, 3, 4};
-	ASSERT_FLOAT_EQ(0, GetParam()(begin(x), end(x), begin(y)));}
+    const list<double>   x = {2, 3, 4};
+    const vector<double> y = {2, 3, 4};
+	ASSERT_FLOAT_EQ(0, GetParam()(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_2) {
-    const list<int>   x = {2, 3, 4};
-    const vector<int> y = {3, 2, 5};
-	ASSERT_FLOAT_EQ(1, GetParam()(begin(x), end(x), begin(y)));}
+    const list<double>   x = {2, 3, 4};
+    const vector<double> y = {3, 2, 5};
+	ASSERT_FLOAT_EQ(1, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_3) {
-    const list<int>   x = {2, 3, 4};
-    const vector<int> y = {4, 1, 6};
-	ASSERT_FLOAT_EQ(2, rmse_transform_accumulate(begin(x), end(x), begin(y)));}
+    const list<double>   x = {2, 3, 4};
+    const vector<double> y = {4, 1, 6};
+	ASSERT_FLOAT_EQ(2, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_4) {
-    const list<int>   x = {2, 3, 4};
-    const vector<int> y = {4, 3, 2};
-	ASSERT_FLOAT_EQ(1.6329932, rmse_transform_accumulate(begin(x), end(x), begin(y)));}
+    const list<double>   x = {2, 3, 4};
+    const vector<double> y = {4, 3, 2};
+	ASSERT_FLOAT_EQ(1.6329932, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
