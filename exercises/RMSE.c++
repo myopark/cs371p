@@ -34,12 +34,12 @@ TEST_P(RMSEListFixture, test_1) {
 TEST_P(RMSEListFixture, test_2) {
     const list<double>   x = {2, 3, 4};
     const vector<double> y = {3, 2, 5};
-	ASSERT_FLOAT_EQ(1, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
+	ASSERT_FLOAT_EQ(1, rmse_while(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_3) {
     const list<double>   x = {2, 3, 4};
     const vector<double> y = {4, 1, 6};
-	ASSERT_FLOAT_EQ(2, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
+	ASSERT_FLOAT_EQ(2, rmse_transform_accumulate(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_4) {
     const list<double>   x = {2, 3, 4};
