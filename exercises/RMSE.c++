@@ -13,7 +13,7 @@
 using namespace std;
 using namespace testing;
 
-using RMSEListSignature = function<bool (list<double>::const_iterator, list<double>::const_iterator, vector<double>::const_iterator, double)>;
+using RMSEListSignature = function<double (list<double>::const_iterator, list<double>::const_iterator, vector<double>::const_iterator, double)>;
 
 struct RMSEListFixture : TestWithParam<RMSEListSignature>
     {};
@@ -34,14 +34,14 @@ TEST_P(RMSEListFixture, test_1) {
 TEST_P(RMSEListFixture, test_2) {
     const list<double>   x = {2, 3, 4};
     const vector<double> y = {3, 2, 5};
-	ASSERT_FLOAT_EQ(1, rmse_while(begin(x), end(x), begin(y), 0.0));}
+	ASSERT_FLOAT_EQ(1, GetParam()(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_3) {
     const list<double>   x = {2, 3, 4};
     const vector<double> y = {4, 1, 6};
-	ASSERT_FLOAT_EQ(2, rmse_transform_accumulate(begin(x), end(x), begin(y), 0.0));}
+	ASSERT_FLOAT_EQ(2, GetParam()(begin(x), end(x), begin(y), 0.0));}
 
 TEST_P(RMSEListFixture, test_4) {
     const list<double>   x = {2, 3, 4};
     const vector<double> y = {4, 3, 2};
-	ASSERT_FLOAT_EQ(1.6329932, rmse_back_inserter(begin(x), end(x), begin(y), 0.0));}
+	ASSERT_FLOAT_EQ(1.6329932, GetParam()(begin(x), end(x), begin(y), 0.0));}
