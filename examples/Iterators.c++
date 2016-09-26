@@ -38,32 +38,32 @@ int main () {
     {
     forward_list<int> x(3);
     const int v = 2;
-    fill(x.begin(), x.end(), v);
-    assert(all_of(x.begin(), x.end(), [v] (int w) -> bool {return w == v;}));
+    fill(begin(x), end(x), v);
+    assert(all_of(begin(x), end(x), [v] (int w) -> bool {return w == v;}));
     }
 /*
     {
-    forward_list<int> x = {2, 3, 4}; // error: no matching function for call to '__reverse'
-    reverse(x.begin(), x.end());
+    forward_list<int> x = {2, 3, 4};
+    reverse(begin(x), end(x));     // error: no matching function for call to '__reverse'
     }
 */
     {
     list<int>   x = {2, 3, 4};
     vector<int> y = {4, 3, 2};
-    reverse(x.begin(), x.end());
-    assert(equal(x.begin(), x.end(), y.begin()));
+    reverse(begin(x), end(x));
+    assert(equal(begin(x), end(x), begin(y)));
     }
 /*
     {
     list<int>   x = {2, 3, 4};
-    sort(x.begin(), x.end());  // error: invalid operands to binary expression ('std::__1::__list_iterator<int, void *>' and 'std::__1::__list_iterator<int, void *>')
+    sort(begin(x), end(x));  // error: invalid operands to binary expression ('std::__1::__list_iterator<int, void *>' and 'std::__1::__list_iterator<int, void *>')
     }
 */
     {
     vector<int>   x = {4, 2, 3};
     list<int>     y = {2, 3, 4};
-    sort(x.begin(), x.end());
-    assert(equal(x.begin(), x.end(), y.begin()));
+    sort(begin(x), end(x));
+    assert(equal(begin(x), end(x), begin(y)));
     }
 
     cout << "Done." << endl;
