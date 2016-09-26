@@ -44,7 +44,7 @@ int main () {
 /*
     {
     forward_list<int> x = {2, 3, 4};
-    reverse(begin(x), end(x));     // error: no matching function for call to '__reverse'
+    reverse(begin(x), end(x));       // error: no matching function for call to '__reverse'
     }
 */
     {
@@ -56,7 +56,7 @@ int main () {
 /*
     {
     list<int>   x = {2, 3, 4};
-    sort(begin(x), end(x));  // error: invalid operands to binary expression ('std::__1::__list_iterator<int, void *>' and 'std::__1::__list_iterator<int, void *>')
+    sort(begin(x), end(x));    // error: invalid operands to binary expression ('std::__1::__list_iterator<int, void *>' and 'std::__1::__list_iterator<int, void *>')
     }
 */
     {
