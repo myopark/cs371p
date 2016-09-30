@@ -32,14 +32,14 @@ using namespace std;
 
 TEST(RangeFixture, test_1) {
     const Range<int> x(2, 2);
-    const Range<int>::iterator b = x.begin();
-    const Range<int>::iterator e = x.end();
+    const Range<int>::iterator b = begin(x);
+    const Range<int>::iterator e = end(x);
     ASSERT_EQ(b, e);}
 
 TEST(RangeFixture, test_2) {
     Range<int> x(2, 3);
-    Range<int>::iterator b = x.begin();
-    Range<int>::iterator e = x.end();
+    Range<int>::iterator b = begin(x);
+    Range<int>::iterator e = end(x);
     ASSERT_NE(b, e);
     ASSERT_EQ(2, *b);
     Range<int>::iterator& y = ++b;
@@ -48,8 +48,8 @@ TEST(RangeFixture, test_2) {
 
 TEST(RangeFixture, test_3) {
     Range<int> x(2, 4);
-    Range<int>::iterator b = x.begin();
-    Range<int>::iterator e = x.end();
+    Range<int>::iterator b = begin(x);
+    Range<int>::iterator e = end(x);
     ASSERT_NE(b, e);
     ASSERT_EQ(2, *b);
     ++b;
