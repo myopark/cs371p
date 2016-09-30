@@ -13,8 +13,9 @@ FILES :=               \
     Arguments          \
     BoostSerialization \
     Iterators          \
-    Functions          \
-    Returns
+    Cache              \
+    Returns            \
+    Consts
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

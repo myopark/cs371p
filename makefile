@@ -125,8 +125,9 @@ sync:
     --include "Arguments.c++"                \
     --include "BoostSerialization.c++"       \
     --include "Iterators.c++"                \
-    --include "Functions.c++"                \
+    --include "Cache.c++"                    \
     --include "Returns.c++"                  \
+    --include "Consts.c++"                   \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
