@@ -31,13 +31,13 @@ auto end (const C& x) -> decltype (x.end()) {
 using namespace std;
 
 TEST(RangeFixture, test_1) {
-    const Range<int> x = {2, 2};
+    const Range<int> x(2, 2);
     const Range<int>::iterator b = x.begin();
     const Range<int>::iterator e = x.end();
     ASSERT_EQ(b, e);}
 
 TEST(RangeFixture, test_2) {
-    Range<int> x = {2, 3};
+    Range<int> x(2, 3);
     Range<int>::iterator b = x.begin();
     Range<int>::iterator e = x.end();
     ASSERT_NE(b, e);
@@ -47,7 +47,7 @@ TEST(RangeFixture, test_2) {
     ASSERT_EQ(b, e);}
 
 TEST(RangeFixture, test_3) {
-    Range<int> x = {2, 4};
+    Range<int> x(2, 4);
     Range<int>::iterator b = x.begin();
     Range<int>::iterator e = x.end();
     ASSERT_NE(b, e);
@@ -59,7 +59,7 @@ TEST(RangeFixture, test_3) {
     ASSERT_EQ(b, e);}
 
 TEST(RangeFixture, test_4) {
-    Range<int> x = {2, 5};
+    Range<int> x(2, 5);
     ASSERT_TRUE(equal(begin(x), end(x), begin({2, 3, 4})));}
 
 /*
