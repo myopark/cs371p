@@ -6,7 +6,8 @@ FILES :=       \
     Incr       \
     Equal      \
     Copy       \
-    Fill
+    Fill       \
+    AllOf
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

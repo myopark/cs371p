@@ -144,9 +144,10 @@ sync:
     --include "Fill.h"                       \
     --include "RMSE.c++"                     \
     --include "RMSE.h"                       \
+    --include "AllOf.c++"                    \
+    --include "AllOf.h"                      \
     --include "RangeIterator.c++"            \
     --include "Range.c++"                    \
-    --include "AllOf.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \
