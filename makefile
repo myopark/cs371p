@@ -148,6 +148,7 @@ sync:
     --include "AllOf.c++"                    \
     --include "AllOf.h"                      \
     --include "RangeIterator.c++"            \
+    --include "RangeIterator.h"              \
     --include "Range.c++"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
