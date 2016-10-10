@@ -15,7 +15,8 @@ FILES :=               \
     Iterators          \
     Cache              \
     Returns            \
-    Consts
+    Consts             \
+    Arrays
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

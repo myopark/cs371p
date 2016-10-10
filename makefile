@@ -131,6 +131,7 @@ sync:
     --include "Cache.c++"                    \
     --include "Returns.c++"                  \
     --include "Consts.c++"                   \
+    --include "Arrays.c++"                   \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \
