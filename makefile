@@ -56,6 +56,8 @@ clean:
 	cd exercises; make clean
 	@echo
 	cd projects/collatz; make clean
+	@echo
+	cd projects/allocator; make clean
 
 config:
 	git config -l
@@ -96,6 +98,7 @@ push:
 	git add exercises
 	git add makefile
 	git add projects/collatz
+	git add projects/allocator
 	git commit -m "another commit"
 	git push
 	git status
@@ -163,6 +166,12 @@ sync:
     --include "TestCollatz.out"              \
     --exclude "*"                            \
     ../../projects/c++/collatz/ projects/collatz
+	@rsync -r -t -u -v --delete              \
+    --include "Allocator.h"                  \
+    --include "TestAllocator.c++"            \
+    --include "TestAllocator.out"            \
+    --exclude "*"                            \
+    ../../projects/c++/allocator/ projects/allocator
 
 test:
 	make clean
@@ -172,6 +181,8 @@ test:
 	cd exercises; make test
 	@echo
 	cd projects/collatz; make test
+	@echo
+	cd projects/allocator; make test
 
 versions:
 	which make
