@@ -58,7 +58,7 @@ class Range_Iterator : public std::iterator<std::input_iterator_tag, T> {
                 _v (v)
             {}
 
-        const T& operator * () const {
+        T operator * () const {
             return _v;}
 
         Range_Iterator& operator ++ () {

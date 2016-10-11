@@ -1,8 +1,8 @@
-// ------------------------------------
+// -------------------------------------
 // projects/allocator/TestAllocator1.c++
 // Copyright (C) 2015
 // Glenn P. Downing
-// ------------------------------------
+// -------------------------------------
 
 // --------
 // includes
@@ -33,8 +33,8 @@ struct TestAllocator1 : testing::Test {
 typedef testing::Types<
             std::allocator<int>,
             std::allocator<double>,
-            Allocator<int,    100>,
-            Allocator<double, 100>>
+            my_allocator<int,    100>,
+            my_allocator<double, 100>>
         my_types_1;
 
 TYPED_TEST_CASE(TestAllocator1, my_types_1);
@@ -89,11 +89,11 @@ TYPED_TEST(TestAllocator1, test_10) {
 // --------------
 
 TEST(TestAllocator2, const_index) {
-    const Allocator<int, 100> x;
+    const my_allocator<int, 100> x;
     ASSERT_EQ(x[0], 0);}
 
 TEST(TestAllocator2, index) {
-    Allocator<int, 100> x;
+    my_allocator<int, 100> x;
     ASSERT_EQ(x[0], 0);}
 
 // --------------
@@ -112,8 +112,8 @@ struct TestAllocator3 : testing::Test {
     typedef typename A::pointer    pointer;};
 
 typedef testing::Types<
-            Allocator<int,    100>,
-            Allocator<double, 100>>
+            my_allocator<int,    100>,
+            my_allocator<double, 100>>
         my_types_2;
 
 TYPED_TEST_CASE(TestAllocator3, my_types_2);

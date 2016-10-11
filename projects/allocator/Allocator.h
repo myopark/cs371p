@@ -21,7 +21,7 @@
 // ---------
 
 template <typename T, std::size_t N>
-class Allocator {
+class my_allocator {
     public:
         // --------
         // typedefs
@@ -43,14 +43,14 @@ class Allocator {
         // operator ==
         // -----------
 
-        friend bool operator == (const Allocator&, const Allocator&) {
+        friend bool operator == (const my_allocator&, const my_allocator&) {
             return true;}                                              // this is correct
 
         // -----------
         // operator !=
         // -----------
 
-        friend bool operator != (const Allocator& lhs, const Allocator& rhs) {
+        friend bool operator != (const my_allocator& lhs, const my_allocator& rhs) {
             return !(lhs == rhs);}
 
     private:
@@ -92,15 +92,14 @@ class Allocator {
          * O(1) in time
          * throw a bad_alloc exception, if N is less than sizeof(T) + (2 * sizeof(int))
          */
-        Allocator () {
+        my_allocator () {
             (*this)[0] = 0; // replace!
             // <your code>
             assert(valid());}
 
-        // Default copy, destructor, and copy assignment
-        // Allocator  (const Allocator&);
-        // ~Allocator ();
-        // Allocator& operator = (const Allocator&);
+                      my_allocator  (const my_allocator&) = default;
+                      ~my_allocator ()                    = default;
+        my_allocator& operator =    (const my_allocator&) = default;
 
         // --------
         // allocate
