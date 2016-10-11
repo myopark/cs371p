@@ -44,7 +44,7 @@ class my_allocator {
         // -----------
 
         friend bool operator == (const my_allocator&, const my_allocator&) {
-            return true;}                                              // this is correct
+            return true;}                                                    // this is correct
 
         // -----------
         // operator !=
