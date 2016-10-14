@@ -169,13 +169,14 @@ int main () {
     }
 
     {
-//  B* const a = new A[10];                      // error: invalid conversion from ‘A*’ to ‘B*’
-    A* const a = new B[10];                      // dangerous
+//  B* const a = new A[10];     // error: invalid conversion from ‘A*’ to ‘B*’
+    A* const a = new B[10];     // dangerous
     assert(a[0].f() == "A::f");
-//  assert(a[1].f() == "A::f");                  // undefined
-//  delete [] a;                                 // undefined
-    assert(static_cast<B*>(a)[1].f() == "B::f");
-    delete [] static_cast<B*>(a);                // ~B::B() and ~A::A()
+//  assert(a[1].f() == "A::f"); // undefined
+//  delete [] a;                // undefined
+    B* b = static_cast<B*>(a);
+    assert(b[1].f() == "B::f");
+    delete [] b;                // ~B::B() and ~A::A()
     }
 
     {

@@ -27,16 +27,16 @@ class my_allocator {
         // typedefs
         // --------
 
-        typedef T                 value_type;
+        using T                 value_type;
 
-        typedef std::size_t       size_type;
-        typedef std::ptrdiff_t    difference_type;
+        using std::size_t       size_type;
+        using std::ptrdiff_t    difference_type;
 
-        typedef       value_type*       pointer;
-        typedef const value_type* const_pointer;
+        using       value_type*       pointer;
+        using const value_type* const_pointer;
 
-        typedef       value_type&       reference;
-        typedef const value_type& const_reference;
+        using       value_type&       reference;
+        using const value_type& const_reference;
 
     public:
         // -----------
