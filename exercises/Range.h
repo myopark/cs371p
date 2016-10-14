@@ -82,9 +82,9 @@ class Range {
             {}
 
         iterator begin () const {
-            return iterator(_b);}
+            return _b;}
 
         iterator end () const {
-            return iterator(_e);}};
+            return _e;}};
 
 #endif // Range_h

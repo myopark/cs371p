@@ -185,12 +185,12 @@ int main () {
     assert(x.size() == s);
     assert(x[0]     == v);
     vector<int> y(x);
-    assert( x ==  y);
-    assert(&x != &y);
+    assert( x    ==  y);
+    assert(&x[1] != &y[1]);
     vector<int> z(2 * s, v);
     x = z;
-    assert( x ==  z);
-    assert(&x != &z);
+    assert( x    ==  z);
+    assert(&x[1] != &z[1]);
     }
 
     {
