@@ -7,6 +7,9 @@
 
 #include <algorithm> // copy, fill, swap
 #include <cstddef>   // ptrdiff_t, size_t
+#include <utility>  // !=
+
+using std::rel_ops::operator!=;
 
 template <typename T>
 class my_vector {
