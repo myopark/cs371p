@@ -131,8 +131,8 @@ sync:
     --include "Cache.c++"                    \
     --include "Returns.c++"                  \
     --include "Consts.c++"                   \
-    --include "FunctionOverloading.c++"      \
     --include "Arrays.c++"                   \
+    --include "FunctionOverloading.c++"      \
     --exclude "*"                            \
     ../../examples/c++/ examples
 	@rsync -r -t -u -v --delete              \

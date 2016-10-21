@@ -34,7 +34,7 @@ class my_vector {
         explicit my_vector (size_type s = 0, const_reference v = T()) :
                 _b ((s == 0) ? nullptr : new T[s]),
                 _e ((s == 0) ? nullptr : _b + s) {
-            std::fill(begin(), end(), v);}
+            std::fill(_b, _e, v);}
 
         my_vector (std::initializer_list<T> rhs) :
                 _b ((rhs.size() == 0) ? nullptr : new T[rhs.size()]),
