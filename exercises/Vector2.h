@@ -51,10 +51,9 @@ class my_vector {
                 _e (rhs.size() == 0 ? nullptr : _b + rhs.size()) {
             std::copy(rhs._b, rhs._e, _b);}
 
-        my_vector& operator = (const my_vector& rhs) {
-            my_vector that(rhs);
-            std::swap(_b, that._b);
-            std::swap(_e, that._e);
+        my_vector& operator = (my_vector rhs) {
+            std::swap(_b, rhs._b);
+            std::swap(_e, rhs._e);
             return *this;}
 
         ~my_vector () {
