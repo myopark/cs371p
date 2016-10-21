@@ -1,13 +1,17 @@
 .DEFAULT_GOAL := test
 
-FILES :=       \
-    IsPrime1   \
-    IsPrime2   \
-    Incr       \
-    Equal      \
-    Copy       \
-    Fill       \
-    AllOf
+FILES :=          \
+    IsPrime1      \
+    IsPrime2      \
+    Incr          \
+    Equal         \
+    Copy          \
+    Fill          \
+    AllOf         \
+    RangeIterator \
+    Range         \
+    Vector1       \
+    Vector2
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

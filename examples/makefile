@@ -16,9 +16,7 @@ FILES :=               \
     Cache              \
     Returns            \
     Consts             \
-    Arrays             \
-    Vector1            \
-    Vector2
+    Arrays
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
