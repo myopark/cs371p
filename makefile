@@ -160,8 +160,9 @@ sync:
     --include "Vector1.h"                    \
     --include "Vector2.c++"                  \
     --include "Vector2.h"                    \
-    --include "Memory.h"                     \
     --include "Vector3.c++"                  \
+    --include "Vector3.h"                    \
+    --include "Memory.h"                     \
     --include "Vector4.c++"                  \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
