@@ -38,6 +38,11 @@ class my_vector {
                 _e ((s == 0) ? nullptr : _b + s) {
             std::fill(begin(), end(), v);}
 
+        my_vector (std::initializer_list<T> rhs) :
+                _b ((rhs.size() == 0) ? nullptr : new T[rhs.size()]),
+                _e ((rhs.size() == 0) ? nullptr : _b + rhs.size()) {
+            std::copy(rhs.begin(), rhs.end(), _b);}
+
         my_vector (const my_vector& rhs) :
                 _b (rhs.size() == 0 ? nullptr : new T[rhs.size()]),
                 _e (rhs.size() == 0 ? nullptr : _b + rhs.size()) {
