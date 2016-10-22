@@ -182,6 +182,16 @@ sync:
     --include "TestAllocator.out"            \
     --exclude "*"                            \
     ../../projects/c++/allocator/ projects/allocator
+	@rsync -r -t -u -v --delete              \
+    --include "Darwin.c++"                   \
+    --include "Darwin.h"                     \
+    --include "RunDarwin.c++"                \
+    --include "RunDarwin.in"                 \
+    --include "RunDarwin.out"                \
+    --include "TestDarwin.c++"               \
+    --include "TestDarwin.out"               \
+    --exclude "*"                            \
+    ../../projects/c++/darwin/ projects/darwin
 
 test:
 	make clean

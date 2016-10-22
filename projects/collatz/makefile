@@ -107,8 +107,9 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
 
 TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                               >  TestCollatz.tmp 2>&1
-	$(GCOV) -b Collatz.c++ | grep -A 5 "File 'Collatz.c++'" >> TestCollatz.tmp
+	$(VALGRIND) ./TestCollatz                                        >  TestCollatz.tmp 2>&1
+	-$(GCOV) -b Collatz.c++     | grep -A 5 "File 'Collatz.c++'"     >> TestCollatz.tmp
+	-$(GCOV) -b TestCollatz.c++ | grep -A 5 "File 'TestCollatz.c++'" >> TestCollatz.tmp
 	cat TestCollatz.tmp
 
 check:
