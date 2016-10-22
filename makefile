@@ -58,6 +58,8 @@ clean:
 	cd projects/collatz; make clean
 	@echo
 	cd projects/allocator; make clean
+	@echo
+	cd projects/darwin; make clean
 
 config:
 	git config -l
@@ -99,6 +101,7 @@ push:
 	git add makefile
 	git add projects/collatz
 	git add projects/allocator
+	git add projects/darwin
 	git commit -m "another commit"
 	git push
 	git status
@@ -203,6 +206,8 @@ test:
 	cd projects/collatz; make test
 	@echo
 	cd projects/allocator; make test
+	@echo
+	cd projects/darwin; make test
 
 versions:
 	which make
