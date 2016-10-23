@@ -10,14 +10,12 @@ FILES :=                            \
     html                            \
     makefile                        \
     RunDarwin.c++                   \
-    RunDarwin.in                    \
     RunDarwin.out                   \
     TestDarwin.c++                  \
     TestDarwin.out
 
 # uncomment these:
 #    .travis.yml                     \
-#    darwin-tests/EID-RunDarwin.in   \
 #    darwin-tests/EID-RunDarwin.out  \
 #    darwin-tests/EID-TestDarwin.c++ \
 #    darwin-tests/EID-TestDarwin.out \
@@ -97,7 +95,7 @@ RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunDarwin.c++  --
 
 RunDarwin.tmp: RunDarwin
-	./RunDarwin < RunDarwin.in > RunDarwin.tmp
+	./RunDarwin > RunDarwin.tmp
 	diff RunDarwin.tmp RunDarwin.out
 
 TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
