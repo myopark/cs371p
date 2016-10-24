@@ -29,8 +29,6 @@ struct A {
     ~A() {
         cout << "~A() ";}};
 
-#include "Move.h"
-
 template <typename T>
 struct B {
     A<T> _x;
@@ -56,6 +54,8 @@ struct B {
 B<int> f () {
     B<int> z(4);
     return z;}
+
+#include "Move.h"
 
 C<int> g () {
     C<int> z(4);
