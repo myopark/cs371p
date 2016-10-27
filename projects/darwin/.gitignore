@@ -1,0 +1,13 @@
+.DS_Store
+*.dSYM
+*.gcda
+*.gcno
+*.gcov
+*.plist
+darwin-tests
+Doxyfile
+Icon?
+RunDarwin
+RunDarwin.tmp
+TestDarwin
+TestDarwin.tmp

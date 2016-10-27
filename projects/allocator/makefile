@@ -1,27 +1,20 @@
-.PHONY: Collatz.log
+.PHONY: Allocator.log
 
 .DEFAULT_GOAL := test
 
-FILES :=                              \
-    .gitignore                        \
-    Collatz.c++                       \
-    Collatz.h                         \
-    Collatz.log                       \
-    html                              \
-    makefile                          \
-    RunCollatz.c++                    \
-    RunCollatz.in                     \
-    RunCollatz.out                    \
-    TestCollatz.c++                   \
-    TestCollatz.out
+FILES :=                                  \
+    .gitignore                            \
+    Allocator.h                           \
+    Allocator.log                         \
+    html                                  \
+    makefile                              \
+    TestAllocator.c++                     \
+    TestAllocator.out
 
 # uncomment these:
-#    .travis.yml                       \
-#    UVaCollatz.c++                    \
-#    collatz-tests/EID-RunCollatz.in   \
-#    collatz-tests/EID-RunCollatz.out  \
-#    collatz-tests/EID-TestCollatz.c++ \
-#    collatz-tests/EID-TestCollatz.out \
+#    .travis.yml                           \
+#    allocator-tests/EID-TestAllocator.c++ \
+#    allocator-tests/EID-TestAllocator.out \
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -73,14 +66,14 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-collatz-tests:
-	git clone https://github.com/cs371p-fall-2016/collatz-tests.git
+allocator-tests:
+	git clone https://github.com/cs371p-fall-2016/allocator-tests.git
 
-html: Doxyfile Collatz.h Collatz.c++ RunCollatz.c++ TestCollatz.c++
+html: Doxyfile Allocator.h TestAllocator.c++
 	doxygen Doxyfile
 
-Collatz.log:
-	git log > Collatz.log
+Allocator.log:
+	git log > Allocator.log
 
 Doxyfile:
 	doxygen -g
@@ -90,27 +83,16 @@ Doxyfile:
 # EXTRACT_PRIVATE        = YES
 # EXTRACT_STATIC         = YES
 
-RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
-	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          Collatz.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze Collatz.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunCollatz.c++  --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunCollatz.c++  --
+TestAllocator: Allocator.h TestAllocator.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestAllocator.c++ -o TestAllocator $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestAllocator.c++ --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestAllocator.c++ --
 
-RunCollatz.tmp: RunCollatz
-	./RunCollatz < RunCollatz.in > RunCollatz.tmp
-	diff RunCollatz.tmp RunCollatz.out
-
-TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestCollatz.c++ --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
-
-TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                                        >  TestCollatz.tmp 2>&1
-	-$(GCOV) -b Collatz.c++     | grep -A 5 "File 'Collatz.c++'"     >> TestCollatz.tmp
-	-$(GCOV) -b TestCollatz.c++ | grep -A 5 "File 'TestCollatz.c++'" >> TestCollatz.tmp
-	cat TestCollatz.tmp
+TestAllocator.tmp: TestAllocator
+	$(VALGRIND) ./TestAllocator                                          >  TestAllocator.tmp 2>&1
+	-$(GCOV) -b TestAllocator.c++ | grep -A 5 "File 'Allocator.h'"       >> TestAllocator.tmp
+	-$(GCOV) -b TestAllocator.c++ | grep -A 5 "File 'TestAllocator.c++'" >> TestAllocator.tmp
+	cat TestAllocator.tmp
 
 check:
 	@not_found=0;                                 \
@@ -138,12 +120,10 @@ clean:
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  Collatz.log
+	rm -f  Allocator.log
 	rm -f  Doxyfile
-	rm -f  RunCollatz
-	rm -f  RunCollatz.tmp
-	rm -f  TestCollatz
-	rm -f  TestCollatz.tmp
+	rm -f  TestAllocator
+	rm -f  TestAllocator.tmp
 	rm -rf *.dSYM
 	rm -rf html
 	rm -rf latex
@@ -152,10 +132,8 @@ config:
 	git config -l
 
 format:
-	$(CLANG-FORMAT) -i Collatz.c++
-	$(CLANG-FORMAT) -i Collatz.h
-	$(CLANG-FORMAT) -i RunCollatz.c++
-	$(CLANG-FORMAT) -i TestCollatz.c++
+	$(CLANG-FORMAT) -i Allocator.h
+	$(CLANG-FORMAT) -i TestAllocator.c++
 
 status:
 	make clean
@@ -164,7 +142,7 @@ status:
 	git remote -v
 	git status
 
-test: html Collatz.log RunCollatz.tmp TestCollatz.tmp collatz-tests check
+test: html Allocator.log TestAllocator.tmp allocator-tests check
 
 versions:
 	which make

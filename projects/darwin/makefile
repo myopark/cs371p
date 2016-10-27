@@ -1,27 +1,24 @@
-.PHONY: Collatz.log
+.PHONY: Darwin.log
 
 .DEFAULT_GOAL := test
 
-FILES :=                              \
-    .gitignore                        \
-    Collatz.c++                       \
-    Collatz.h                         \
-    Collatz.log                       \
-    html                              \
-    makefile                          \
-    RunCollatz.c++                    \
-    RunCollatz.in                     \
-    RunCollatz.out                    \
-    TestCollatz.c++                   \
-    TestCollatz.out
+FILES :=                            \
+    .gitignore                      \
+    Darwin.c++                      \
+    Darwin.h                        \
+    Darwin.log                      \
+    html                            \
+    makefile                        \
+    RunDarwin.c++                   \
+    RunDarwin.out                   \
+    TestDarwin.c++                  \
+    TestDarwin.out
 
 # uncomment these:
-#    .travis.yml                       \
-#    UVaCollatz.c++                    \
-#    collatz-tests/EID-RunCollatz.in   \
-#    collatz-tests/EID-RunCollatz.out  \
-#    collatz-tests/EID-TestCollatz.c++ \
-#    collatz-tests/EID-TestCollatz.out \
+#    .travis.yml                     \
+#    darwin-tests/EID-RunDarwin.out  \
+#    darwin-tests/EID-TestDarwin.c++ \
+#    darwin-tests/EID-TestDarwin.out \
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
@@ -73,14 +70,14 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-collatz-tests:
-	git clone https://github.com/cs371p-fall-2016/collatz-tests.git
+darwin-tests:
+	git clone https://github.com/cs371p-fall-2016/darwin-tests.git
 
-html: Doxyfile Collatz.h Collatz.c++ RunCollatz.c++ TestCollatz.c++
+html: Doxyfile Darwin.h Darwin.c++ RunDarwin.c++ TestDarwin.c++
 	doxygen Doxyfile
 
-Collatz.log:
-	git log > Collatz.log
+Darwin.log:
+	git log > Darwin.log
 
 Doxyfile:
 	doxygen -g
@@ -90,27 +87,26 @@ Doxyfile:
 # EXTRACT_PRIVATE        = YES
 # EXTRACT_STATIC         = YES
 
-RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
-	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          Collatz.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze Collatz.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunCollatz.c++  --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunCollatz.c++  --
+RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
+	$(CXX) $(CXXFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          Darwin.c++     --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze Darwin.c++     --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunDarwin.c++  --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunDarwin.c++  --
 
-RunCollatz.tmp: RunCollatz
-	./RunCollatz < RunCollatz.in > RunCollatz.tmp
-	diff RunCollatz.tmp RunCollatz.out
+RunDarwin.tmp: RunDarwin
+	./RunDarwin > RunDarwin.tmp
+	diff RunDarwin.tmp RunDarwin.out
 
-TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestCollatz.c++ --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestCollatz.c++ --
+TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestDarwin.c++ --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestDarwin.c++ --
 
-TestCollatz.tmp: TestCollatz
-	$(VALGRIND) ./TestCollatz                                        >  TestCollatz.tmp 2>&1
-	-$(GCOV) -b Collatz.c++     | grep -A 5 "File 'Collatz.c++'"     >> TestCollatz.tmp
-	-$(GCOV) -b TestCollatz.c++ | grep -A 5 "File 'TestCollatz.c++'" >> TestCollatz.tmp
-	cat TestCollatz.tmp
+TestDarwin.tmp: TestDarwin
+	$(VALGRIND) ./TestDarwin                               >  TestDarwin.tmp 2>&1
+	$(GCOV) -b Darwin.c++ | grep -A 5 "File 'Darwin.c++'" >> TestDarwin.tmp
+	cat TestDarwin.tmp
 
 check:
 	@not_found=0;                                 \
@@ -138,12 +134,12 @@ clean:
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  Collatz.log
+	rm -f  Darwin.log
 	rm -f  Doxyfile
-	rm -f  RunCollatz
-	rm -f  RunCollatz.tmp
-	rm -f  TestCollatz
-	rm -f  TestCollatz.tmp
+	rm -f  RunDarwin
+	rm -f  RunDarwin.tmp
+	rm -f  TestDarwin
+	rm -f  TestDarwin.tmp
 	rm -rf *.dSYM
 	rm -rf html
 	rm -rf latex
@@ -152,10 +148,10 @@ config:
 	git config -l
 
 format:
-	$(CLANG-FORMAT) -i Collatz.c++
-	$(CLANG-FORMAT) -i Collatz.h
-	$(CLANG-FORMAT) -i RunCollatz.c++
-	$(CLANG-FORMAT) -i TestCollatz.c++
+	$(CLANG-FORMAT) -i Darwin.c++
+	$(CLANG-FORMAT) -i Darwin.h
+	$(CLANG-FORMAT) -i RunDarwin.c++
+	$(CLANG-FORMAT) -i TestDarwin.c++
 
 status:
 	make clean
@@ -164,7 +160,7 @@ status:
 	git remote -v
 	git status
 
-test: html Collatz.log RunCollatz.tmp TestCollatz.tmp collatz-tests check
+test: html Darwin.log RunDarwin.tmp TestDarwin.tmp darwin-tests check
 
 versions:
 	which make
